@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gym Rep Counter</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen px-4">
+  <div class="bg-white rounded-2xl shadow-xl p-6 w-full max-w-sm text-center space-y-6">
+    <h1 class="text-2xl font-bold text-gray-800">Rep Counter</h1>
+    
+    <div class="text-6xl font-bold text-black-600" id="counter">0</div>
+    
+    <div class="flex justify-center space-x-4">
+      <button id="decrement" class="bg-blue-500 text-white rounded-xl px-6 py-2 text-xl hover:bg-red-600">-</button>
+      <button id="increment" class="bg-blue-500 text-white rounded-xl px-6 py-2 text-xl hover:bg-green-600">+</button>
+    </div>
+    
+    <button id="reset" class="mt-4 bg-gray-400 text-white rounded-xl px-4 py-2 hover:bg-gray-500">
+      Reset
+    </button>
+  </div>
+  
+  <script>
+    const counterEl = document.getElementById('counter');
+    const incrementBtn = document.getElementById('increment');
+    const decrementBtn = document.getElementById('decrement');
+    const resetBtn = document.getElementById('reset');
+
+    let count = parseInt(localStorage.getItem('repCount')) || 0;
+    counterEl.textContent = count;
+
+    function update() {
+      counterEl.textContent = count;
+      localStorage.setItem('repCount', count);
+    }
+
+    incrementBtn.addEventListener('click', () => {
+      count++;
+      update();
+    });
+
+    decrementBtn.addEventListener('click', () => {
+      if (count > 0) count--;
+      update();
+    });
+
+    resetBtn.addEventListener('click', () => {
+      count = 0;
+      update();
+    });
+  </script>
+</body>
+</html>

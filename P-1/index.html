@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote For Your Favorite Language</title>
+    <style>
+        body {
+            margin-top: 250px;
+            height: 100vh;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #92a7d9;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        header {
+            justify-content: center;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 15%;
+        
+        }
+
+        button:hover {
+            background-color: #1661ab;
+        }
+
+        p {
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 18px;
+            margin: 10px 0;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <header>
+            <h1>Vote For Your Favorite Language</h1>
+        </header>
+    </div>
+
+    <div class="button">
+        <button onclick="vote('javascript')">javascript</button>
+        <button onclick="vote('python')">Python</button>
+        <button onclick="vote('java')">java</button>
+    </div>
+
+    <div class="result">
+        <p><span class = "language">javaScript :</span> <span id = "js-count">0</span> votes</p>
+        <p><span class = "language">python : </span><span id = "py-count">0</span> votes</p>
+        <p><span class = "language">java : </span><span java = "java-count">0</span> votes</p>
+    </div>
+
+    <script src ='script.js'></script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Portal - Upload Resume</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Upload Your Resume</h1>
+            <p>Please upload your resume in PDF or Word format (max 2MB).</p>
+        </div>
+
+        <% if (message) { %>
+            <div class="message <%= message.type %>">
+                <%= message.text %>
+            </div>
+        <% } %>
+        
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="resumeFile" class="file-label">
+                    <span class="file-icon">📁</span>
+                    <span id="file-name">Choose a PDF or Word file...</span>
+                </label>
+
+                <input type="file" id="resumeFile" name="resumeFile" accept=".pdf,.doc,.docx" required>
+            </div>
+            <button type="submit" class="btn">Upload Resume</button>
+        </form>
+    </div>
+
+    <script>
+        const fileInput = document.getElementById('resumeFile');
+        const fileNameSpan = document.getElementById('file-name');
+        
+        fileInput.addEventListener('change', () => {
+            if (fileInput.files.length > 0) {
+                fileNameSpan.textContent = fileInput.files[0].name;
+            } else {
+                // CHANGE: Updated placeholder text in script
+                fileNameSpan.textContent = 'Choose a PDF or Word file...';
+            }
+        });
+    </script>
+</body>
+</html>

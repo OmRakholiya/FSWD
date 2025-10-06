@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Freelance Portfolio | Contact</title>
+    <style>
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background: #f8fafc;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .contact-box {
+        background: white;
+        padding: 32px;
+        border-radius: 10px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        width: 360px;
+      }
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #1e3a8a;
+      }
+      input,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+        border-radius: 6px;
+        border: 1px solid #cbd5e1;
+        font-size: 15px;
+        outline: none;
+      }
+      textarea {
+        resize: vertical;
+        min-height: 100px;
+      }
+      button {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 6px;
+        background: #2563eb;
+        color: white;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #1d4ed8;
+      }
+      .message {
+        margin-top: 10px;
+        text-align: center;
+        font-size: 14px;
+      }
+      .success {
+        color: #16a34a;
+      }
+      .error {
+        color: #dc2626;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="contact-box">
+      <h2>Contact Me</h2>
+      <% if (message) { %>
+      <p class="message success"><%= message %></p>
+      <% } %> <% if (error) { %>
+      <p class="message error"><%= error %></p>
+      <% } %>
+      <form action="/send" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </body>
+</html>

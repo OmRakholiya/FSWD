@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tuition Admin Panel</title>
+    <style>
+      body {
+        font-family: Arial;
+        background: #f8fafc;
+        margin: 0;
+        padding: 30px;
+      }
+      h1 {
+        color: #2563eb;
+      }
+      a {
+        text-decoration: none;
+        color: white;
+        background: #2563eb;
+        padding: 6px 12px;
+        border-radius: 5px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background: white;
+      }
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: center;
+      }
+      th {
+        background: #2563eb;
+        color: white;
+      }
+      .btn-edit {
+        background: #f59e0b;
+      }
+      .btn-delete {
+        background: #dc2626;
+      }
+      .btn-add {
+        float: right;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🎓 Tuition Admin Panel</h1>
+    <a href="/add" class="btn-add">+ Add Student</a>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Course</th>
+        <th>Fees</th>
+        <th>Actions</th>
+      </tr>
+      <% students.forEach(student => { %>
+      <tr>
+        <td><%= student.name %></td>
+        <td><%= student.age %></td>
+        <td><%= student.course %></td>
+        <td><%= student.fees %></td>
+        <td>
+          <a href="/edit/<%= student._id %>" class="btn-edit">Edit</a>
+          <form
+            action="/delete/<%= student._id %>?_method=DELETE"
+            method="POST"
+            style="display: inline"
+          >
+            <button type="submit" class="btn-delete">Delete</button>
+          </form>
+        </td>
+      </tr>
+      <% }) %>
+    </table>
+  </body>
+</html>
